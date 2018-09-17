@@ -39,6 +39,9 @@ public final class StringProcessorProxy implements iStringProcessor {
     @Override
     public Double parseDouble(String s) {
         Results r = ClientCommunicator.getInstance().send(CommonData.PARSEDOUBLE_URI, s);
-        return (Double) validateResults(r);
+        if (!r.isSuccess()){
+            throw new NumberFormatException(r.getErrorInfo());
+        }
+        return (Double) r.getData();
     }
 }

@@ -13,7 +13,7 @@ public class ParseDoubleHandler extends HandlerBase{
             r = new Results(true, d, "");
         }
         catch (NumberFormatException e){
-            r = new Results(false, null, e.getMessage());//TODO is getMessage right for this case?
+            r = new Results(false, null, e.getMessage());
         }
         return r;
     }
